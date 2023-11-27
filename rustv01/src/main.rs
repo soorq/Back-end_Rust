@@ -298,4 +298,15 @@ fn main () {
         i += 1;
     }
 
+    // Сокращенные кортежи
+    let tuple: &(i16, i16, String, i16) = &(123, 432, String::from("Lol?asda"), 432);
+
+    let (a, b, c, d) = tuple;
+
+    let grades : (i16, i16, String, i16) = (tuple.0, tuple.1, tuple.2.to_string(), tuple.3);
+
+    println!("grades {:?}", grades);
+
+    println!("{}, {}, {}, {}", a, b, c, d);
+
  }

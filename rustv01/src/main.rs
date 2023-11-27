@@ -163,59 +163,139 @@
 // }
 
 
-use std::io;
+// use std::io;
 
-fn main() {
+// fn main() {
 
-    let mut a_str: String = String::new();
-    let mut b_str: String = String::new();
-    let mut c_str: String = String::new();
+//     let mut a_str: String = String::new();
+//     let mut b_str: String = String::new();
+//     let mut c_str: String = String::new();
 
-    println!("a - x2 , b -x , c - number");
+//     println!("a - x2 , b -x , c - number");
     
-    println!("a - x2");
-    match io::stdin().read_line(&mut a_str) {
-        Ok(_) => {},
-        Err(e) => {
-            println!("Error {}", e);
-        }
+//     println!("a - x2");
+//     match io::stdin().read_line(&mut a_str) {
+//         Ok(_) => {},
+//         Err(e) => {
+//             println!("Error {}", e);
+//         }
+//     }
+    
+//     println!("b-x");
+//     match io::stdin().read_line(&mut b_str) {
+//         Ok(_) => {},
+//         Err(e) => {
+//             println!("Error {}", e);
+//         }
+//     }
+    
+//     println!("c - number");
+//     match io::stdin().read_line(&mut c_str) {
+//         Ok(_) => {},
+//         Err(e) => {
+//             println!("Error {}", e);
+//         }
+//     }
+
+//     let a: f64 = a_str.trim().parse().unwrap();
+//     let b: f64 = b_str.trim().parse().unwrap();
+//     let c: f64 = c_str.trim().parse().unwrap();
+
+//     let d: f64 = (b*b) - 4.0 * (a * c);
+
+    
+//         if d > 0.0 {
+//             let x1: f64 = (-b + d.sqrt()) / (2.0 * a);
+//             let x2: f64 = (-b - d.sqrt()) / (2.0 * a);
+//             println!("x1={},\nx2={}\n", x1, x2);
+//         };
+
+//         if d == 0.0 {
+//             let x: f64 = -b / (2.0 * a);
+//             println!("x корень\n = {}", x);
+//         };
+
+//         if d < 0.0 {
+//             println!("no real roots");
+//         }
+// }
+
+    // Массивы
+
+    // 2 ТИПА объединения кортежи и массивы
+    // В массиве только данные строго одно типа, в кортеже можно менять сколько 
+    
+    // let arr = [1,34,32,4,234,32];
+    // Выводить массив в консоли только так
+    // println!("{:?}", arr[5]);
+    // let arr_a: [i8; 5] = [1,1,1,1,1];
+    // println!("{:?}", arr_b);
+    // println!("{:?}" ,arr_a);
+
+    // Чтобы записать в rust 50 2 без map and etc utils we are need to get some 
+fn main () {
+
+    let buffer: &[i32; 50] = &[2; 50];
+
+    let res: Vec<u32> = buffer.iter().map(|_x| 0xff).collect(); 
+
+    println!("{:?}", buffer);
+    println!("{:?}", res);
+
+    //  Итерация массива
+    for i in buffer.iter() {
+        println!("{:?}", i)
     }
-    
-    println!("b-x");
-    match io::stdin().read_line(&mut b_str) {
-        Ok(_) => {},
-        Err(e) => {
-            println!("Error {}", e);
+
+    // Старый способ
+    // for i in 0..buffer.len() {
+    //     println!("{:?}", buffer[i])
+    // }
+
+
+    // Через while
+
+    // let mut i = 0;
+
+    // while i < buffer.len() {
+    //     println!("{}", buffer[i]);
+    //     i += 1;
+    // }
+
+    // Task #1
+
+    // for i in 0..buffer.len(){
+    //     if i % 2 == 0 {
+    //         println!("Povezlo-Povezlo {}", i)
+    //     }
+
+    //     println!("Лох ебаный {}", i)
+    // }
+
+    // Повторяющиеся числа
+
+    // for i in 0..buffer.len() {
+    //     if i == buffer[i] {
+    //         println!("Повторяющиеся числа {}", i)
+    //     }
+
+    //     println!("{}", buffer[i]);
+    //     println!("{}", i);
+    // }
+
+    let arr_3 = [1,2,3 ,2 , 4, 3, 2, 2,4,5,6,7,8,9];
+
+    let mut i = 0;
+    while i < arr_3.len() {
+        let mut j = i + 1;
+        while j < arr_3.len() {
+            if arr_3[i] == arr_3[j] {
+                println!("Повторяющиеся числа {}", arr_3[i]);
+                break;
+            }
+            j += 1;
         }
+        i += 1;
     }
-    
-    println!("c - number");
-    match io::stdin().read_line(&mut c_str) {
-        Ok(_) => {},
-        Err(e) => {
-            println!("Error {}", e);
-        }
-    }
 
-    let a: f64 = a_str.trim().parse().unwrap();
-    let b: f64 = b_str.trim().parse().unwrap();
-    let c: f64 = c_str.trim().parse().unwrap();
-
-    let d: f64 = (b*b) - 4.0 * (a * c);
-
-    
-        if d > 0.0 {
-            let x1: f64 = (-b + d.sqrt()) / (2.0 * a);
-            let x2: f64 = (-b - d.sqrt()) / (2.0 * a);
-            println!("x1={},\nx2={}\n", x1, x2);
-        };
-
-        if d == 0.0 {
-            let x: f64 = -b / (2.0 * a);
-            println!("x корень\n = {}", x);
-        };
-
-        if d < 0.0 {
-            println!("no real roots");
-        }
-}
+ }
